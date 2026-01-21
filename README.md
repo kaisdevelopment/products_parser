@@ -25,5 +25,12 @@ git clone [https://github.com/kaisdevelopment/products_parser.git](https://githu
 cd products_parser
 composer install
 
+## 📹 Apresentação do Projeto
+Assista ao vídeo explicativo da solução: [Clique aqui para assistir no Loom](https://www.loom.com/share/bdd2572b4ec64027be9430d00da238a3)
 
-https://www.loom.com/share/bdd2572b4ec64027be9430d00da238a3
+
+## 📹 Demo do Projeto
+
+[![Assista ao Vídeo](https://cdn.loom.com/assets/img/og/loom-logo-social.jpg)](https://www.loom.com/share/bdd2572b4ec64027be9430d00da238a3)
+
+> Clique na imagem acima para ver a explicação técnica e o funcionamento da API.
