@@ -24,3 +24,6 @@ Clone o repositório e instale as dependências:
 git clone [https://github.com/kaisdevelopment/products_parser.git](https://github.com/kaisdevelopment/products_parser.git)
 cd products_parser
 composer install
+
+
+https://www.loom.com/share/bdd2572b4ec64027be9430d00da238a3
