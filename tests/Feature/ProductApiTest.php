@@ -32,21 +32,32 @@ it('can list products with pagination', function () {
 
 // Teste de Detalhe (GET /products/{code})
 it('can show a specific product', function () {
-    $product = Product::factory()->create(['code' => '12345']);
+    // Gera um código único para não bater com dados antigos do banco
+    $uniqueCode = (string) rand(1000000, 9999999);
+    
+    $product = Product::factory()->create(['code' => $uniqueCode]);
 
-    getJson('/api/products/12345')
+    getJson("/api/products/{$uniqueCode}")
         ->assertStatus(200)
         ->assertJson([
-            'code' => '12345',
+            'code' => $uniqueCode,
             'product_name' => $product->product_name
         ]);
 });
 
 // Teste de Atualização (PUT /products/{code}) - Diferencial 5
 it('can update a product', function () {
-    $product = Product::factory()->create(['code' => '67890', 'status' => 'draft']);
+    // Gera um código único para este teste
+    $uniqueCode = (string) rand(1000000, 9999999);
 
-    putJson('/api/products/67890', [
+    // Cria o produto inicial no banco
+    $product = Product::factory()->create([
+        'code' => $uniqueCode, 
+        'status' => 'draft'
+    ]);
+
+    // Envia a requisição de atualização
+    putJson("/api/products/{$uniqueCode}", [
         'status' => 'published',
         'product_name' => 'Nome Editado'
     ])
@@ -55,8 +66,8 @@ it('can update a product', function () {
         'message' => 'Product updated'
     ]);
 
-    // Verifica no banco se mudou mesmo
-    expect(Product::where('code', '67890')->first()->status)->toBe('published');
+    // Verifica no banco se o status realmente mudou de 'draft' para 'published'
+    expect(Product::where('code', $uniqueCode)->first()->status)->toBe('published');
 });
 
 // Teste de 404
